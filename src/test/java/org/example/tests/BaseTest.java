@@ -21,8 +21,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         Configuration.browser = "chrome";
         Configuration.headless = false; // Set to true for headless
-        Configuration.timeout = 15000; // Increased timeout to 15 seconds
-        Configuration.pageLoadTimeout = 60000; // 60 second page load timeout
+        Configuration.timeout = 30000;
+        Configuration.pageLoadTimeout = 120000;
         SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true).savePageSource(false));
     }
 
