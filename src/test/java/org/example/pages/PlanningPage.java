@@ -1,0 +1,29 @@
+package org.example.pages;
+
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
+
+public class PlanningPage extends BasePage {
+
+    private SelenideElement wirPlanenText = $(By.cssSelector("[data-qa='changeAddressBlockTitle']"));
+    private SelenideElement neinButton = $(By.cssSelector("scale-button[data-qa='newCustomerButton']"));
+
+    public boolean isWirPlanenDisplayed() {
+        logAction("Checking if 'Wir planen' is displayed");
+        try {
+            // Wait a moment for page to settle
+            Thread.sleep(2000);
+            return wirPlanenText.shouldBe(com.codeborne.selenide.Condition.visible).isDisplayed();
+        } catch (Exception e) {
+            logAction("'Wir planen' text not found: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public void clickNein() {
+        logAction("Clicking Nein button");
+        neinButton.click();
+    }
+}
