@@ -38,9 +38,10 @@ public class AvailabilityCheckPage extends BasePage {
         // No need to select from dropdown
     }
 
-    public void clickAdresse() {
+    public TarriffsPage clickAdresse() {
         logAction("Clicking Adresse button");
         // Since the button is inside a custom element (shadow DOM), we use JavaScript to click it
         com.codeborne.selenide.Selenide.executeJavaScript("document.querySelector('scale-button').click();");
+        return new TarriffsPage();
     }
 }
