@@ -5,6 +5,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.example.pages.AvailabilityCheckPage;
+import org.example.pages.ProductsPage;
 import org.example.pages.TarriffsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -29,5 +30,13 @@ public class TarriffsPageTest extends BaseTest {
         Assert.assertTrue(tarriffsPage.isWirPlanenDisplayed(), "'Wir planen' should be displayed");
 
         tarriffsPage.clickNein();
+        tarriffsPage.selectNeuenGlasfaserAnschluss();
+        tarriffsPage.clickVerfuegbareProdukte();
+
+        ProductsPage productsPage = new ProductsPage();
+        Assert.assertTrue(productsPage.isGlasfaserDisplayed(), "'Glasfaser' should be displayed");
+
+        productsPage.clickPrivatkunden();
+        Assert.assertTrue(productsPage.isGlasfaserTarifeDisplayed(), "'Glasfaser-Tarife' should be displayed");
     }
 }
