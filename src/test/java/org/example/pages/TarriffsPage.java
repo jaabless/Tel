@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -15,9 +16,7 @@ public class TarriffsPage extends BasePage {
     public boolean isWirPlanenDisplayed() {
         logAction("Checking if 'Wir planen' is displayed");
         try {
-            // Wait a moment for page to settle
-            Thread.sleep(2000);
-            return wirPlanenText.shouldBe(com.codeborne.selenide.Condition.visible).isDisplayed();
+            return wirPlanenText.shouldBe(Condition.visible).isDisplayed();
         } catch (Exception e) {
             logAction("'Wir planen' text not found: " + e.getMessage());
             return false;
@@ -26,16 +25,16 @@ public class TarriffsPage extends BasePage {
 
     public void clickNein() {
         logAction("Clicking Nein button");
-        neinButton.click();
+        neinButton.shouldBe(Condition.visible).click();
     }
 
     public void selectNeuenGlasfaserAnschluss() {
         logAction("Selecting 'Neuen Glasfaser-Anschluss' radio button");
-        neuenGlasfaserRadio.click();
+        neuenGlasfaserRadio.shouldBe(Condition.visible).click();
     }
 
     public void clickVerfuegbareProdukte() {
         logAction("Clicking 'Verfügbare Produkte anzeigen' button");
-        verfuegbareProdukteButton.click();
+        verfuegbareProdukteButton.shouldBe(Condition.visible).click();
     }
 }
