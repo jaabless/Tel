@@ -5,6 +5,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.example.pages.AvailabilityCheckPage;
+import org.example.pages.HardwarePage;
 import org.example.pages.ProductsPage;
 import org.example.pages.TarriffsPage;
 import org.testng.Assert;
@@ -38,5 +39,11 @@ public class TarriffsPageTest extends BaseTest {
 
         productsPage.clickPrivatkunden();
         Assert.assertTrue(productsPage.isGlasfaserTarifeDisplayed(), "'Glasfaser-Tarife' should be displayed");
+
+        productsPage.selectGlasfaser2000();
+        productsPage.selectGlasfaser2000MitMagentaTV();
+
+        HardwarePage hardwarePage = productsPage.clickWeiter();
+        Assert.assertTrue(hardwarePage.isBitteWaehlenDisplayed(), "'Bitte wählen' should be displayed");
     }
 }
