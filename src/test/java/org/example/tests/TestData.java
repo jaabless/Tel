@@ -1,6 +1,8 @@
 package org.example.tests;
 
 public class TestData {
+    public static final String BASE_URL = "https://portal-proxy-pacman-03.pub.cl01.tmagic-dev.telekom.de/ausbau/checkout/availability-check";
+
     public static final String DEFAULT_PLZ = "34277";
     public static final String DEFAULT_STADT = "Fuldabrück";
     public static final String DEFAULT_STRASSE = "Ahornweg";
