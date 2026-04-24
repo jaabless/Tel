@@ -29,7 +29,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         logger.info("Starting test");
-        open("https://portal-proxy-pacman-03.pub.cl01.tmagic-dev.telekom.de/ausbau/checkout/availability-check");
+        open(TestData.BASE_URL);
     }
 
     @AfterMethod
