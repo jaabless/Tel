@@ -4,7 +4,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.example.pages.AvailabilityCheckPage;
 import org.example.pages.CheckoutPage;
 import org.example.pages.HardwarePage;
 import org.example.pages.ProductsPage;
@@ -20,16 +19,10 @@ public class HardwarePageTest extends BaseTest {
     @Story("Navigate to hardware page and select hardware options")
     @Description("Test hardware selection and checkout navigation after tariff selection")
     public void testHardwarePage() {
-        AvailabilityCheckPage availabilityPage = new AvailabilityCheckPage();
-        TarriffsPage tarriffsPage = new TarriffsPage();
+        // Navigate to tariff page and complete tariff selection
+        TarriffsPage tarriffsPage = new TestHelper().getTariffPageAfterNavigation();
 
-        availabilityPage.acceptCookies();
-        availabilityPage.enterPlzOrderStadt("34277, Fuldabrück, Fuldabrück");
-        availabilityPage.enterStrasse("Ahornweg");
-        availabilityPage.enterHausnummer("1");
-        availabilityPage.clickAdresse();
-
-        tarriffsPage.isWirPlanenDisplayed();
+        // Navigate through tariff options
         tarriffsPage.clickNein();
         tarriffsPage.selectNeuenGlasfaserAnschluss();
         tarriffsPage.clickVerfuegbareProdukte();
@@ -39,12 +32,15 @@ public class HardwarePageTest extends BaseTest {
         productsPage.selectGlasfaser2000();
         productsPage.selectGlasfaser2000MitMagentaTV();
 
+        // Navigate to hardware page
         HardwarePage hardwarePage = productsPage.clickWeiter();
         Assert.assertTrue(hardwarePage.isBitteWaehlenDisplayed(), "'Bitte wählen' should be displayed");
 
+        // Select hardware options
         hardwarePage.clickAvm();
         hardwarePage.clickMagentaTV();
 
+        // Navigate to checkout
         CheckoutPage checkoutPage = hardwarePage.clickZur();
         Assert.assertTrue(checkoutPage.isTelekomLoginDisplayed(), "'Telekom Login' should be displayed");
     }
