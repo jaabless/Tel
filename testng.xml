@@ -10,4 +10,9 @@
             <class name="org.example.tests.TarriffsPageTest"/>
         </classes>
     </test>
+    <test name="HardwarePageTest">
+        <classes>
+            <class name="org.example.tests.HardwarePageTest"/>
+        </classes>
+    </test>
 </suite>
