@@ -4,7 +4,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.example.pages.AvailabilityCheckPage;
 import org.example.pages.ProductsPage;
 import org.example.pages.TarriffsPage;
 import org.testng.Assert;
@@ -18,24 +17,22 @@ public class TarriffsPageTest extends BaseTest {
     @Story("Navigate to tariff page and verify elements")
     @Description("Test the tariff page display and navigation after availability check")
     public void testTariffPage() {
-        AvailabilityCheckPage availabilityPage = new AvailabilityCheckPage();
-        TarriffsPage tarriffsPage = new TarriffsPage();
+        // Navigate to tariff page
+        TarriffsPage tarriffsPage = new TestHelper().getTariffPageAfterNavigation();
 
-        availabilityPage.acceptCookies();
-        availabilityPage.enterPlzOrderStadt("34277, Fuldabrück, Fuldabrück");
-        availabilityPage.enterStrasse("Ahornweg");
-        availabilityPage.enterHausnummer("1");
-        availabilityPage.clickAdresse();
-
+        // Verify tariff page elements
         Assert.assertTrue(tarriffsPage.isWirPlanenDisplayed(), "'Wir planen' should be displayed");
 
+        // Navigate to products
         tarriffsPage.clickNein();
         tarriffsPage.selectNeuenGlasfaserAnschluss();
         tarriffsPage.clickVerfuegbareProdukte();
 
+        // Verify products page
         ProductsPage productsPage = new ProductsPage();
         Assert.assertTrue(productsPage.isGlasfaserDisplayed(), "'Glasfaser' should be displayed");
 
+        // Select tariff options
         productsPage.clickPrivatkunden();
         Assert.assertTrue(productsPage.isGlasfaserTarifeDisplayed(), "'Glasfaser-Tarife' should be displayed");
 
