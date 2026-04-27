@@ -28,6 +28,8 @@ public class HardwarePage extends BasePage {
     public void clickAvm() {
         logAction("Clicking AVM router option");
         avmRouter.shouldBe(Condition.visible).click();
+        logAction("Scrolling down for additional options to appear");
+        magentaTV.shouldBe(Condition.visible).scrollIntoView(true);
     }
 
     public void clickMagentaTV() {
