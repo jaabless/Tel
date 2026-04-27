@@ -44,6 +44,8 @@ public class ProductsPage extends BasePage {
     public void selectGlasfaser2000() {
         logAction("Selecting 'Glasfaser 2.000' radio button");
         glasfaser2000Radio.shouldBe(Condition.visible).click();
+        logAction("Scrolling down for additional options to appear");
+        glasfaser2000MagentaTVOption.shouldBe(Condition.visible).scrollIntoView(true);
     }
 
     public void selectGlasfaser2000MitMagentaTV() {
